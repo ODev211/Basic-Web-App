@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carbon Footprint Calculator</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">
+        <img src="../static/images/logo.jpeg" alt="Logo" class="logo-circle">
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/carbon-footprint" class="active">Carbon Footprint</a></li>
+      <li><a href="/booking">Booking</a></li>
+      <li><a href="/accessibility">Accessibility</a></li>
+    </ul>
+    <ul class="nav-right">
+      {% if user_logged_in %}
+        <li><a href="/profile">Profile</a></li>
+      {% else %}
+        <li><a href="/login">Login</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <main class="content">
+    <h1>Calculate Your Carbon Footprint</h1>
+    <p>Use the carbon footprint calculator to measure your environmental impact.</p>
+    <!-- Embed the carbon footprint calculator iframe -->
+    <iframe width="710" height="475" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"
+      src="https://calculator.carbonfootprint.com/calculator.aspx"></iframe>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Rolsa Technologies. All rights reserved.</p>
+    <p>
+      <a href="/terms">Terms &amp; Conditions</a> |
+      <a href="/privacy">Privacy Policy</a> |
+      <a href="/access">Accessibility</a>
+    </p>
+  </footer>
+</body>
+</html>

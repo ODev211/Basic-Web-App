@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="../static/css/auth.css">
+  <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <img src="../static/images/logo.jpeg" alt="Logo" class="logo-circle">
+  </div>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/carbon-footprint">Carbon Footprint</a></li>
+        <li><a href="/booking">Booking</a></li>
+        <li><a href="/accessibility">Accessibility</a></li>
+    </ul>
+    <ul class="nav-right">
+        <li><a href="/login">Login</a></li>
+    </ul>
+</nav>
+
+  <!-- Register Form -->
+  <main class="form-container">
+      <h2>Register</h2>
+      
+      <!-- Flash messages display -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="flashes">
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+      
+      <form action="/register" method="POST">
+          <label for="fname">First Name:</label>
+          <input type="text" id="fname" name="fname" required>
+          
+          <label for="lname">Last Name:</label>
+          <input type="text" id="lname" name="lname" required>
+          
+          <label for="uname">Username:</label>
+          <input type="text" id="uname" name="uname" required>
+          
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+          
+          <label for="confirm_password">Confirm Password:</label>
+          <input type="password" id="confirm_password" name="confirm_password" required>
+          
+          <!-- Terms and Conditions & Privacy Policy Checkbox -->
+          <label for="terms">
+              <input type="checkbox" id="terms" name="terms" required>
+              I agree to the <a href="/terms">Terms and Conditions</a> and <a href="/privacy">Privacy Policy</a>
+          </label>
+          
+          <button type="submit" class="btn">Register</button>
+      </form>
+      <p>Already have an account? <a href="/login">Login here</a></p>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+      <p>&copy; 2025 Rolsa Technologies. All rights reserved.</p>
+  </footer>
+</body>
+</html>

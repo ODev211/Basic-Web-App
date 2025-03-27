@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Metadata and stylesheets -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking</title>
+  <link rel="stylesheet" href="../static/css/styles.css"> <!-- Main styles -->
+  <link rel="stylesheet" href="../static/css/booking.css"> <!-- Booking-specific styles -->
+</head>
+<body>
+  <!-- Navigation bar -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <!-- Logo displayed as a circular image -->
+      <img src="../static/images/logo.jpeg" alt="Logo" class="logo-circle">
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <!-- Navbar links -->
+      <li><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/carbon-footprint">Carbon Footprint</a></li>
+      <li><a href="/booking" class="active">Booking</a></li> <!-- Active page -->
+      <li><a href="/accessibility">Accessibility</a></li>
+    </ul>
+    <ul class="nav-right">
+      {% if user_logged_in %}
+        <!-- Profile link if user is logged in -->
+        <li><a href="/profile">Profile</a></li>
+      {% else %}
+        <!-- Login link if user is not logged in -->
+        <li><a href="/login">Login</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  
+  <!-- Display flash messages (success or error notifications) -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flashes">
+        {% for category, message in messages %}
+          <!-- Flash message with category-specific styling -->
+          <li class="flash {{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Main container for booking form -->
+  <main class="booking-container">
+    <h1>Book a Service</h1>
+
+    <!-- Booking form -->
+    <form action="/booking" method="POST">
+      <!-- Dropdown for selecting service type -->
+      <div>
+        <label for="service_type">Choose a Service Type:</label>
+        <select name="service_type" id="service_type" required>
+          <option value="Consultation">Consultation</option>
+          <option value="Installation specialist">Installation specialist</option>
+        </select>
+      </div>
+
+      <!-- Dropdown for selecting time slot -->
+      <div>
+        <label for="time_slot">Select a Time Slot:</label>
+        <select name="time_slot" id="time_slot" required>
+          <!-- Each option dynamically checks if the time slot is booked -->
+          <option value="11am" {% if "11am" in booked_slots %} disabled{% endif %}>
+            {% if "11am" in booked_slots %}11am - Unavailable{% else %}11am{% endif %}
+          </option>
+          <option value="1pm" {% if "1pm" in booked_slots %} disabled{% endif %}>
+            {% if "1pm" in booked_slots %}1pm - Unavailable{% else %}1pm{% endif %}
+          </option>
+          <option value="3pm" {% if "3pm" in booked_slots %} disabled{% endif %}>
+            {% if "3pm" in booked_slots %}3pm - Unavailable{% else %}3pm{% endif %}
+          </option>
+        </select>
+      </div>
+
+      <!-- Date selector (previous and next buttons) -->
+      <div>
+        <label>Select a Date:</label>
+        <div class="date-selector">
+          <!-- Previous date button -->
+          <button type="button" id="prev-date">&#8592;</button>
+          <!-- Display the selected date -->
+          <span id="display-date">{{ selected_date }}</span>
+          <!-- Next date button -->
+          <button type="button" id="next-date">&#8594;</button>
+        </div>
+        <!-- Hidden input to store the selected date -->
+        <input type="hidden" id="selected_date" name="selected_date" value="{{ selected_date }}">
+      </div>
+
+      <!-- Submit button -->
+      <div>
+        <button type="submit">Submit Booking</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Footer section -->
+  <footer>
+    <p>&copy; 2025 Rolsa Technologies. All rights reserved.</p>
+    <p>
+      <a href="/terms">Terms &amp; Conditions</a> |
+      <a href="/privacy">Privacy Policy</a> |
+      <a href="/access">Accessibility</a>
+    </p>
+  </footer>
+
+  <!-- Inline JavaScript for date navigation -->
+  <script>
+    // Previous date button logic
+    document.getElementById('prev-date').addEventListener('click', function() {
+      // Get the current selected date and subtract one day
+      let dateInput = document.getElementById('selected_date');
+      let currentDate = new Date(dateInput.value);
+      currentDate.setDate(currentDate.getDate() - 1);
+      let year = currentDate.getFullYear();
+      let month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      let day = String(currentDate.getDate()).padStart(2, '0');
+      let newDate = year + '-' + month + '-' + day;
+      dateInput.value = newDate; // Update the hidden input
+      document.getElementById('display-date').innerText = newDate; // Update the displayed date
+    });
+
+    // Next date button logic
+    document.getElementById('next-date').addEventListener('click', function() {
+      // Get the current selected date and add one day
+      let dateInput = document.getElementById('selected_date');
+      let currentDate = new Date(dateInput.value);
+      currentDate.setDate(currentDate.getDate() + 1);
+      let year = currentDate.getFullYear();
+      let month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      let day = String(currentDate.getDate()).padStart(2, '0');
+      let newDate = year + '-' + month + '-' + day;
+      dateInput.value = newDate; // Update the hidden input
+      document.getElementById('display-date').innerText = newDate; // Update the displayed date
+    });
+  </script>
+</body>
+</html>

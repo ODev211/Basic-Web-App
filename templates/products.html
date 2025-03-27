@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">
+        <img src="../static/images/logo.jpeg" alt="Logo" class="logo-circle">
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/products" class="active">Products</a></li>
+      <li><a href="/carbon-footprint">Carbon Footprint</a></li>
+      <li><a href="/booking">Booking</a></li>
+      <li><a href="/accessibility">Accessibility</a></li>
+    </ul>
+    <ul class="nav-right">
+      {% if user_logged_in %}
+        <li><a href="/profile">Profile</a></li>
+      {% else %}
+        <li><a href="/login">Login</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <h1>Our Products</h1>
+
+  <section class="cards-container">
+    <div class="card">
+      <h1>Rolsa Solar Energy</h1>
+      <img src="../static/images/solar.jpg" alt="Solar">
+      <p>
+        We offer a wide range of solar panel installation kits at Rolsa Technologies.
+        Solar panels capture energy from the sun and convert it into electricity for your
+        home or business. They provide a clean, renewable source of energy, reducing your
+        dependence on traditional power grids and lowering your electricity bills.
+      </p>
+    </div>
+    <div class="card">
+      <h1>Rolsa EV Charging Stations</h1>
+      <img src="../static/images/ev.jpg" alt="EV_Charging">
+      <p>
+        As well as for solar, we do electric vehicle charging stations across the country.
+        Electric vehicle (EV) charging stations allow you to recharge your electric vehicle's
+        battery. Our stations are designed for fast, efficient, and safe charging, ensuring
+        that your EV is always ready to go while supporting a greener future by reducing carbon
+        emissions.
+      </p>
+      <a href="/booking" class="btn-link">Find Out More</a>
+    </div>
+    <div class="card">
+      <h1>Smart Home Energy Management Systems</h1>
+      <img src="../static/images/smarthome.webp" alt="Smart_Energy">
+      <p>
+        Smart home energy management systems optimize the energy consumption in your home.
+        They monitor and control your energy use, helping you reduce wastage, lower energy bills,
+        and create a more sustainable, energy-efficient environment with automated controls.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Rolsa Technologies. All rights reserved.</p>
+    <p>
+      <a href="/terms">Terms &amp; Conditions</a> |
+      <a href="/privacy">Privacy Policy</a> |
+      <a href="/access">Accessibility</a>
+    </p>
+  </footer>
+</body>
+</html>
