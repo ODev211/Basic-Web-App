@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+  <link rel="stylesheet" href="../static/css/profile.css"> <!-- Profile-specific styles -->
+  <link rel="stylesheet" href="../static/css/navbar.css"> <!-- Navbar styling -->
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+        <img src="../static/images/logo.jpeg" alt="Logo" class="logo-circle">
+    </div>
+
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger-menu" onclick="toggleMenu()">&#9776;</button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/carbon-footprint">Carbon Footprint</a></li>
+      <li><a href="/booking">Booking</a></li>
+      <li><a href="/accessibility">Accessibility</a></li>
+    </ul>
+    <ul class="nav-right">
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flashes">
+        {% for category, message in messages %}
+          <li class="flash {{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Profile Content -->
+  <main class="profile-container">
+    <!-- Profile Header -->
+    <header class="profile-header">
+      <h1>Welcome to your profile!</h1>
+    </header>
+
+    <!-- Profile Information Form -->
+    <section class="profile-info">
+      <form action="/profile" method="POST" class="profile-form">
+        <div class="form-group">
+          <label for="fname">First Name:</label>
+          <input type="text" id="fname" name="fname" value="{{ user.fname }}">
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name:</label>
+          <input type="text" id="lname" name="lname" value="{{ user.lname }}">
+        </div>
+        <div class="form-group">
+          <label for="uname">Username:</label>
+          <input type="text" id="uname" name="uname" value="{{ user.uname }}">
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" value="{{ user.email }}">
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" placeholder="Enter new password">
+        </div>
+        <div class="form-actions">
+          <button type="submit">Save</button>
+          <button type="button" onclick="if(confirm('Are you sure you want to delete your profile? This action cannot be undone.')) { document.getElementById('deleteProfileForm').submit(); }">
+            Delete Profile
+          </button>
+        </div>
+      </form>
+      <form id="deleteProfileForm" action="/delete_profile" method="POST" style="display:none;"></form>
+    </section>
+
+    <!-- Bookings Section -->
+    <section class="bookings-section">
+      <h2>Your Bookings</h2>
+      <div class="upcoming-bookings">
+        {% if bookings %}
+          <ul class="booking-list">
+            {% for booking in bookings %}
+              <li class="booking-item">
+                <div class="booking-details">
+                  <p>Date &amp; Time: {{ booking.date_time }}</p>
+                </div>
+                <form action="{{ url_for('delete_booking', booking_id=booking.id) }}" method="POST" class="delete-booking-form" style="display:inline;">
+                  <button type="submit" title="Cancel booking">&times;</button>
+                </form>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>You have no bookings</p>
+        {% endif %}
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rolsa Technologies. All rights reserved.</p>
+    <p>
+      <a href="/terms">Terms &amp; Conditions</a> |
+      <a href="/privacy">Privacy Policy</a> |
+      <a href="/access">Accessibility</a>
+    </p>
+  </footer>
+
+  <script src="../static/JS/navbar.js"></script> <!-- Hamburger menu functionality -->
+</body>
+</html>

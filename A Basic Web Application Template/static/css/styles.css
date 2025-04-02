@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Make the logo a circle */
+.logo-circle {
+    width: 50px; /* Adjust width to fit your design */
+    height: 50px; /* Keep width and height the same for a circle */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image fits inside the circle properly */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    padding: 15px;
+    color: white;
+}
+
+.nav-links, .nav-right {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li, .nav-right li {
+    margin: 0 10px;
+}
+
+.nav-links a, .nav-right a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 20px; /* Rounded edges */
+    transition: all 0.3s ease;
+}
+
+/* Active Page Styling */
+.nav-links .active {
+    font-weight: bold;
+    padding: 10px 15px;
+    background-color: white;
+    color: black;
+    border-radius: 20px; /* Pill shape */
+    border: 2px solid black;
+}
+
+/* Login Button Styling */
+.nav-right a {
+    background-color: #5dade2; /* Light blue */
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 20px; /* Pill shape */
+    transition: background-color 0.3s ease;
+}
+
+.nav-right a:hover {
+    background-color: #3498db; /* Slightly darker blue on hover */
+}
+
+.content {
+    padding: 20px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    width: 30%;
+    background: #f1f1f1;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.btn-link {
+    display: block;
+    text-decoration: none;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-link:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #555;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* Footer Links Styling */
+footer a {
+    color: white; /* Make footer links white */
+    text-decoration: none; /* Remove the underline */
+    transition: color 0.3s ease; /* Add a smooth transition effect */
+}
+
+footer a:hover {
+    color: #ddd; /* Change color on hover (slightly lighter white) */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+    }
+}
+
+/* Centers the API in the center of the screen */
+iframe {
+    display: block;
+    margin: 20px auto;
+    border: none;
+}

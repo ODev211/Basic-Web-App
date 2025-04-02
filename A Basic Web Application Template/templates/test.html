@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+  <link rel="stylesheet" href="../static/css/navbar.css"> <!-- Hamburger menu styling -->
+</head>
+<body>
+  <nav class="navbar">
+    <!-- Logo Section -->
+    <div class="navbar-brand">
+      <img src="../static/images/logo.jpg" alt="Logo" class="logo-circle">
+    </div>
+
+    <!-- Hamburger Button -->
+    <button class="hamburger-menu" onclick="toggleMenu()">&#9776;</button>
+
+    <!-- Navigation Links -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/carbon-footprint">Carbon Footprint</a></li>
+      <li><a href="/booking">Booking</a></li>
+      <li><a href="/accessibility">Accessibility</a></li>
+    </ul>
+
+    <!-- Profile/Login Section -->
+    <ul class="nav-right">
+      {% if user_logged_in %}
+        <li><a href="/profile">Profile</a></li>
+      {% else %}
+        <li><a href="/login">Login</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Welcome to the Responsive Navbar Example</h1>
+    <p>Resize the browser window to see the hamburger menu in action!</p>
+  </main>
+
+  <script src="../static/java/navbar.js"></script> <!-- JavaScript for menu functionality -->
+</body>
+</html>

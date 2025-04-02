@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Metadata and Stylesheets -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking</title>
+  <link rel="stylesheet" href="../static/css/styles.css"> <!-- General styles -->
+  <link rel="stylesheet" href="../static/css/navbar.css"> <!-- Navbar styling -->
+  <link rel="stylesheet" href="../static/css/booking.css"> <!-- Booking-specific styles -->
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <img src="../static/images/logo.jpeg" alt="Logo" class="logo-circle">
+    </div>
+
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger-menu" onclick="toggleMenu()">&#9776;</button>
+    
+    <!-- Navigation Links -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/carbon-footprint">Carbon Footprint</a></li>
+      <li><a href="/booking" class="active">Booking</a></li>
+      <li><a href="/accessibility">Accessibility</a></li>
+    </ul>
+    
+    <!-- Profile/Login Section -->
+    <ul class="nav-right">
+      {% if user_logged_in %}
+        <li><a href="/profile">Profile</a></li>
+      {% else %}
+        <li><a href="/login">Login</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <!-- Display Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flashes">
+        {% for category, message in messages %}
+          <li class="flash {{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Main Booking Form -->
+  <main class="booking-container">
+    <h1>Book a Service</h1>
+    <form action="/booking" method="POST">
+      <!-- Service Type Dropdown -->
+      <div>
+        <label for="service_type">Choose a Service Type:</label>
+        <select name="service_type" id="service_type" required>
+          <option value="Consultation">Consultation</option>
+          <option value="Installation specialist">Installation specialist</option>
+        </select>
+      </div>
+
+      <!-- Time Slot Dropdown -->
+      <div>
+        <label for="time_slot">Select a Time Slot:</label>
+        <select name="time_slot" id="time_slot" required>
+          <option value="11am" {% if "11am" in booked_slots %} disabled{% endif %}>
+            {% if "11am" in booked_slots %}11am - Unavailable{% else %}11am{% endif %}
+          </option>
+          <option value="1pm" {% if "1pm" in booked_slots %} disabled{% endif %}>
+            {% if "1pm" in booked_slots %}1pm - Unavailable{% else %}1pm{% endif %}
+          </option>
+          <option value="3pm" {% if "3pm" in booked_slots %} disabled{% endif %}>
+            {% if "3pm" in booked_slots %}3pm - Unavailable{% else %}3pm{% endif %}
+          </option>
+        </select>
+      </div>
+
+      <!-- Date Selector -->
+      <div>
+        <label>Select a Date:</label>
+        <div class="date-selector">
+          <button type="button" id="prev-date">&#8592;</button>
+          <span id="display-date">{{ selected_date }}</span>
+          <button type="button" id="next-date">&#8594;</button>
+        </div>
+        <input type="hidden" id="selected_date" name="selected_date" value="{{ selected_date }}">
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <button type="submit">Submit Booking</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rolsa Technologies. All rights reserved.</p>
+    <p>
+      <a href="/terms">Terms &amp; Conditions</a> |
+      <a href="/privacy">Privacy Policy</a> |
+      <a href="/access">Accessibility</a>
+    </p>
+  </footer>
+
+  <!-- Inline JavaScript for Date Navigation -->
+  <script>
+    document.getElementById('prev-date').addEventListener('click', function () {
+      const dateInput = document.getElementById('selected_date');
+      const currentDate = new Date(dateInput.value);
+      currentDate.setDate(currentDate.getDate() - 1);
+      const newDate = currentDate.toISOString().split('T')[0];
+      dateInput.value = newDate;
+      document.getElementById('display-date').innerText = newDate;
+    });
+
+    document.getElementById('next-date').addEventListener('click', function () {
+      const dateInput = document.getElementById('selected_date');
+      const currentDate = new Date(dateInput.value);
+      currentDate.setDate(currentDate.getDate() + 1);
+      const newDate = currentDate.toISOString().split('T')[0];
+      dateInput.value = newDate;
+      document.getElementById('display-date').innerText = newDate;
+    });
+  </script>
+
+  <script src="../static/JS/navbar.js"></script> <!-- Hamburger Menu Script -->
+</body>
+</html>
