@@ -1,0 +1,117 @@
+/* booking.css */
+
+/* Basic Page Styles (if not already provided by a global CSS) */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #dadada;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Booking Container */
+.booking-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    color: #333;
+}
+
+/* Page Heading */
+.booking-container h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form Groups */
+.booking-container form > div {
+    margin-bottom: 20px;
+}
+
+.booking-container form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Form Controls */
+.booking-container form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.booking-container form input[type="hidden"] {
+    display: none;
+}
+
+/* Date Selector Styling */
+.date-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.date-selector button {
+    padding: 8px 12px;
+    font-size: 1em;
+    border: none;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.date-selector button:hover {
+    background-color: #0056b3;
+}
+
+.date-selector #display-date {
+    font-size: 1.1em;
+    font-weight: bold;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* Submit Button Styling */
+.booking-container form button[type="submit"] {
+    padding: 12px 25px;
+    font-size: 1em;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.booking-container form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .booking-container {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .date-selector {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .date-selector button {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,189 @@
+/* profile.css */
+
+/* Container for the whole profile page */
+.profile-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* Profile Header Styling */
+.profile-header {
+    margin-bottom: 20px;
+}
+
+.profile-header h1 {
+    font-size: 2em;
+    color: #333;
+    margin: 0;
+}
+
+/* General Text Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: #e0e0e0; /* Consistent dark background */
+    text-align: center;
+}
+
+/* Make the logo a circle */
+.logo-circle {
+    width: 50px; /* Adjust width to fit your design */
+    height: 50px; /* Keep width and height the same for a circle */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image fits inside the circle properly */
+}
+
+/* Profile Information Form */
+.profile-info {
+    margin-bottom: 30px;
+}
+
+.profile-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.profile-form .form-group {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-form .form-group label {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white; /* Improved readability */
+}
+
+.profile-form .form-group input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #333; /* Consistent dark input backgrounds */
+    color: white; /* Text color */
+    transition: border-color 0.3s ease;
+}
+
+.profile-form .form-group input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Form Actions */
+.form-actions {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.form-actions button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-actions button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.form-actions button[type="button"] {
+    background-color: #dc3545;
+    color: white;
+}
+
+.form-actions button[type="button"]:hover {
+    background-color: #c82333;
+}
+
+/* Bookings Section */
+.bookings-section {
+    margin-top: 40px;
+}
+
+.bookings-section h2 {
+    font-size: 1.5em;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Container for upcoming bookings */
+.upcoming-bookings {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Booking List */
+.booking-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.booking-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.booking-item:last-child {
+    border-bottom: none;
+}
+
+.booking-details {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Delete Booking Button */
+.delete-booking {
+    background: none;
+    border: none;
+    color: #dc3545;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.delete-booking:hover {
+    color: #c82333;
+}
+
+/* Styling for the "No Bookings" Pill */
+.no-bookings {
+    background-color: #ddd;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1em;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .profile-form .form-group {
+        flex: 1 1 100%;
+    }
+}

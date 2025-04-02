@@ -1,0 +1,46 @@
+/* Container for Accessibility Page */
+.accessibility-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    color: #333;
+  }
+  
+  .accessibility-container h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #222;
+  }
+  
+  .accessibility-container section {
+    margin-bottom: 30px;
+  }
+  
+  .accessibility-container h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  .accessibility-container label {
+    font-weight: bold;
+  }
+  
+  select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+  
+  input[type="checkbox"] {
+    transform: scale(1.2); /* Larger toggle size */
+  }
+  

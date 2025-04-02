@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility</title>
+  <link rel="stylesheet" href="../static/css/styles.css"> <!-- General Styles -->
+  <link rel="stylesheet" href="../static/css/navbar.css"> <!-- Navbar styling for smaller screens -->
+  <link rel="stylesheet" href="../static/css/accessibility.css"> <!-- Accessibility Page Styles -->
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <img src="../static/images/logo.jpeg" alt="Logo" class="logo-circle"> 
+    </div>
+
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger-menu" onclick="toggleMenu()">&#9776;</button>
+    
+    <!-- Navigation Links -->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/carbon-footprint">Carbon Footprint</a></li>
+      <li><a href="/booking">Booking</a></li>
+      <li><a href="/accessibility" class="active">Accessibility</a></li>
+    </ul>
+    <ul class="nav-right">
+      {% if user_logged_in %}
+        <li><a href="/profile">Profile</a></li>
+      {% else %}
+        <li><a href="/login">Login</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <!-- Accessibility Settings -->
+  <main class="accessibility-container">
+    <h1>Accessibility Settings</h1>
+    <section>
+      <!-- Font Size Slider -->
+      <h2>Font Size</h2>
+      <div>
+        <label for="font-size-slider">Select font size:</label>
+        <select id="font-size-slider" onchange="updateFontSize(this.value)">
+          <option value="small">Small</option>
+          <option value="standard" selected>Standard</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <!-- Contrast Slider -->
+      <h2>Contrast</h2>
+      <div>
+        <label for="contrast-slider">Select contrast:</label>
+        <select id="contrast-slider" onchange="updateContrast(this.value)">
+          <option value="weak">Weak</option>
+          <option value="standard" selected>Standard</option>
+          <option value="strong">Strong</option>
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <!-- Screen Reader Toggle -->
+      <h2>Screen Reader</h2>
+      <div>
+        <label for="screen-reader-toggle">Enable Screen Reader <span>(Currently Not Available)</span>:</label>
+        <input type="checkbox" id="screen-reader-toggle">
+      </div>
+    </section>
+
+    <!-- Save Button -->
+    <div>
+      <button onclick="saveAccessibilitySettings()">Save Settings</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rolsa Technologies. All rights reserved.</p>
+    <p>
+      <a href="/terms">Terms &amp; Conditions</a> |
+      <a href="/privacy">Privacy Policy</a> |
+      <a href="/access">Accessibility</a>
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../static/JS/navbar.js"></script> <!-- Hamburger menu functionality -->
+  <script src="../static/JS/accessibility.js"></script> <!-- Accessibility settings functionality -->
+</body>
+</html>
