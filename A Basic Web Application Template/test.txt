@@ -1,0 +1,59 @@
+Test: Verify that all navigation links on the Home page work correctly. Test Data: Click every link (Home, Products, Carbon Footprint, Booking, Accessibility) from the Home page navbar. Type: Integration Testing, Interface Testing
+
+Test: Verify that the hamburger menu appears on the Home page when the browser width is reduced below 768px. Test Data: Resize browser to below 768px and check for the hamburger icon (“☰”). Type: UI/Responsive Testing
+
+Test: Verify that the Profile/Login section on the Home page displays the correct button based on user login status. Test Data: Log in to see the “Profile” button; log out to see the “Login” button. Type: Integration Testing, Security (Authentication) Testing
+
+Test: Verify that the Products page navbar displays the Profile/Login button when a user is logged in. Test Data: Access the Products page while logged in and check for the “Profile” button. Type: Integration Testing, Interface Testing
+
+Test: Verify that the Profile page loads and displays the user’s personal details correctly. Test Data: Log in with a test account and inspect the displayed first name, last name, username, and email. Type: Functional Testing, White Box Testing
+
+Test: Verify that the Registration page displays properly and all necessary fields are present. Test Data: Check for fields (first name, last name, username, email, password, confirm password) and terms checkbox. Type: Interface Testing, Functional Testing
+
+Test: Verify that the Login page functions correctly. Test Data: Attempt login with valid and invalid credentials and observe success/error messages. Type: Functional Testing, Error Testing
+
+Test: Verify that the Booking page loads the booking form and displays the dropdown for time slots correctly. Test Data: Load the page and inspect the “Select a Time Slot” dropdown (should list 11am, 1pm, and 3pm). Type: Interface Testing, Functional Testing
+
+Test: Verify that the Booking page prevents a user from booking an already-taken time slot and shows an error message. Test Data: Attempt to book a time slot known to be unavailable (simulate with test data). Type: Negative (Error/Boundary) Testing, Functional Testing
+
+Test: Verify that the date navigation controls (“prev-date” and “next-date” buttons) update the displayed date. Test Data: Click “next-date” and “prev-date” buttons and check that the date in the <span id="display-date"> updates accordingly. Type: Functional Testing, Interface Testing
+
+Test: Verify that unavailable time slots are disabled and labeled as “Unavailable” in the time slot dropdown. Test Data: Set up a test booking for a given date, then load that date on the Booking page. Type: Functional Testing, Boundary Testing
+
+Test: Verify that a successful booking shows a flash success message. Test Data: Submit a booking with valid data and inspect the displayed flash message. Type: Functional Testing, Integration Testing
+
+Test: Verify that booking errors (such as slot already booked) generate an error flash message. Test Data: Try to submit a booking when the time slot is known to be booked; check error message. Type: Error Testing, Functional Testing
+
+Test: Verify dynamic update of time slots using AJAX when changing the date (if implemented). Test Data: Click “next-date” or “prev-date” and watch via browser console (or inspect dropdown) that time slot options update automatically. Type: Integration Testing, UI Testing
+
+Test: (Alternate to AJAX) Verify page reload mechanism using query parameters when the date changes. Test Data: Click “next-date” and observe that the URL updates (e.g. ?selected_date=YYYY-MM-DD) and the page reloads with the correct time slot availability. Type: Integration Testing, Functional Testing
+
+Test: Verify that the Accessibility page’s font size selector immediately changes the font size on the page. Test Data: Select “Small,” “Standard,” and “Large” from the dropdown and observe the body font size. Type: Functional Testing, UI Testing
+
+Test: Verify that the Accessibility page’s contrast selector adjusts the background and text colors appropriately. Test Data: Select “Weak,” “Standard,” and “Strong” contrast options and visually inspect the changes. Type: Functional Testing, UI/Interface Testing
+
+Test: Verify that the Accessibility page’s screen reader toggle is clickable even if it is non-functional. Test Data: Click the screen reader checkbox and confirm that its checked-state changes. Type: Interface Testing, Usability Testing
+
+Test: Verify that saving the Accessibility settings stores the preferences (via localStorage) and that they restore on page reload. Test Data: Change settings, click “Save Settings,” then refresh the page to see if changes persist. Type: Functional Testing, Integration Testing
+
+Test: Verify that the Carbon Footprint Calculator page loads the embedded iframe correctly. Test Data: Open the Carbon Footprint page and inspect that the iframe displays the calculator content. Type: Integration Testing, Interface Testing
+
+Test: Verify that the hamburger menu on the Carbon Calculator page toggles the dropdown links correctly when on a small screen. Test Data: Resize the Carbon Calculator page and click the hamburger menu. Type: Responsive Testing, UI Testing
+
+Test: Verify that the Footer links work correctly and navigate to the corresponding pages (Terms & Conditions, Privacy Policy, Accessibility). Test Data: Click on each footer link and verify the destination page loads. Type: Integration Testing, Interface Testing
+
+Test: Verify that the navbar remains responsive and that on a small screen the hamburger menu is visible and both the main links (when toggled) and the Profile/Login button are visible. Test Data: Resize the browser to a width below 768px and inspect the layout. Type: Responsive Testing, Interface Testing
+
+Test: Verify that when logged in, the Profile/Login block (nav-right) appears on every page (Products, Carbon Footprint, Booking, etc.). Test Data: Log in, then visit each page to confirm the Profile button is shown. Type: Integration Testing, Functional Testing
+
+Test: Verify that user login status is correctly passed to every template (using a context processor or each render call). Test Data: Check the rendered HTML on various pages for the presence of the Profile or Login link based on session. Type: White Box Testing, Integration Testing
+
+Test: Boundary test for the Booking page: Navigate to a very old or very future date and check that the date format remains valid and the system processes it correctly. Test Data: Manually change the date input to a boundary value (e.g., “1900-01-01” or “2100-12-31”). Type: Boundary Testing, Functional Testing
+
+Test: Verify that booking submission with an incorrect date format is handled gracefully with an error message. Test Data: Manipulate the hidden date input to an invalid format using browser developer tools, then submit the form. Type: Negative/Error Testing, Functional Testing
+
+Test: Verify that the Profile page's booking list displays the correct booking details for the logged-in user. Test Data: Create several test bookings and check that each is listed with the correct date and time. Type: Integration Testing, Functional Testing
+
+Test: Verify that clicking the “Delete Profile” button on the Profile page triggers a confirmation prompt, and on confirmation, the deletion process is initiated. Test Data: Click the Delete Profile button and confirm the prompt appears; then confirm deletion. Type: Functional Testing, Error/Boundary Testing
+
+Test: Verify overall website responsiveness by performing cross-browser mobile and desktop tests to ensure navigation, forms, and dynamic content work as expected. Test Data: Use different browsers and devices (or responsive design simulators) to check behavior across resolutions. Type: End-to-End Testing, Responsive Testing, Usability Testing
